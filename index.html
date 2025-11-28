@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Shital Ghadge — QA Engineer</title>
+  <meta name="description" content="Shital Ghadge — QA Engineer. Manual & Automation Testing. Portfolio & contact." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <meta name="theme-color" content="#071029" />
+</head>
+<body>
+  <header class="site-header container">
+    <a class="logo" href="#hero">Shital Ghadge</a>
+
+    <nav class="nav" aria-label="Primary">
+      <a href="#projects">Projects</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="actions">
+      <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
+      <a class="cta" href="#contact">Hire me</a>
+      <button id="menu-toggle" class="hamburger" aria-expanded="false" aria-controls="mobile-menu">☰</button>
+    </div>
+  </header>
+
+  <div id="mobile-menu" class="mobile-menu" hidden>
+    <a href="#projects">Projects</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <!-- particle layer (kept subtle; hidden in light-mode via CSS) -->
+  <canvas id="particle-canvas" class="particles" aria-hidden="true"></canvas>
+
+  <main>
+    <!-- HERO -->
+    <section id="hero" class="hero container">
+      <div class="hero-left fade-up">
+        <p class="eyebrow">QA Engineer</p>
+        <h1 class="name">Shital <span class="accent">Ghadge</span></h1>
+        <p class="lead">I build robust testing solutions — manual and automated — that help teams ship reliable software.</p>
+
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#projects">See my work</a>
+          <a class="btn btn-outline" href="#contact">Contact</a>
+          <a class="link-resume" href="resume.pdf" download>Download Resume</a>
+        </div>
+
+        <div class="meta">
+          <span>📍 Pimpri Chinchwad, Pune</span>
+          <span>•</span>
+          <a href="mailto:shitalghadge02@gmail.com">shitalghadge02@gmail.com</a>
+          <span>•</span>
+          <a href="https://github.com/shitalghadge1683" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+
+      <div class="hero-right fade-up" aria-hidden="false">
+        <div class="avatar-wrap" id="avatar-wrap">
+          <!-- simplified: single static circular avatar -->
+          <img id="avatar" src="avatar.jpg" alt="Shital Ghadge photo">
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section container">
+      <div class="section-head">
+        <h2>Featured Projects</h2>
+        <p class="muted">Automation frameworks, manual testing suites and reporting dashboards.</p>
+      </div>
+
+      <div class="controls">
+        <div class="filters">
+          <button class="filter active" data-filter="all">All</button>
+          <button class="filter" data-filter="automation">Automation</button>
+          <button class="filter" data-filter="manual">Manual</button>
+          <button class="filter" data-filter="internship">Internship</button>
+        </div>
+        <input id="search" class="search" type="search" placeholder="Search projects..." aria-label="Search projects">
+      </div>
+
+      <div id="projects-grid" class="grid" aria-live="polite"></div>
+
+      <div class="more">
+        <a href="https://github.com/shitalghadge1683" target="_blank" rel="noopener" class="btn btn-outline">More on GitHub</a>
+      </div>
+    </section>
+
+    <!-- ABOUT / SKILLS -->
+    <section id="about" class="section about container">
+      <div class="about-left fade-up">
+        <h2>About me</h2>
+        <p>I’m a QA Engineer who enjoys turning ambiguous requirements into tested, reliable software. I write maintainable automation, design test strategies, and work closely with developers to close defects quickly.</p>
+        <p>Tools & processes: Selenium WebDriver, TestNG, Maven, Java, Postman, Jira, SQL, Power BI, Agile workflows.</p>
+      </div>
+
+      <aside class="about-right fade-up">
+        <div class="card facts">
+          <h3>Quick facts</h3>
+          <dl>
+            <dt>Role</dt><dd>QA Engineer</dd>
+            <dt>Availability</dt><dd>Open for freelance & full-time</dd>
+            <dt>Education</dt><dd>BCS — Vidya Pratishthan's College</dd>
+          </dl>
+        </div>
+
+        <div class="card skills">
+          <h3>Skills</h3>
+          <div class="skill-list">
+            <span>Automation</span><span>Selenium</span><span>Java</span><span>TestNG</span>
+            <span>API Testing</span><span>Jira</span><span>SQL</span><span>Power BI</span>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section contact container">
+      <div class="contact-card fade-up">
+        <h2>Contact</h2>
+        <p class="muted">Interested in working together? Send a quick message — I typically reply within a few days.</p>
+
+        <form id="contact-form" class="form" action="mailto:shitalghadge02@gmail.com" method="post" enctype="text/plain">
+          <div class="form-row">
+            <label for="name">Name</label>
+            <input id="name" name="name" required>
+          </div>
+
+          <div class="form-row">
+            <label for="email">Email</label>
+            <input id="email" type="email" name="email" required>
+          </div>
+
+          <div class="form-row">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Send message</button>
+            <a class="btn btn-outline" href="mailto:shitalghadge02@gmail.com">Or email me</a>
+          </div>
+        </form>
+      </div>
+
+      <aside class="contact-aside fade-up">
+        <h3>Other ways</h3>
+        <ul class="contacts">
+          <li><strong>Email:</strong> <a href="mailto:shitalghadge02@gmail.com">shitalghadge02@gmail.com</a></li>
+          <li><strong>Phone:</strong> +91-80108-18388</li>
+          <li><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/shital-ghadge-b980b7223" target="_blank" rel="noopener">linkedin.com/in/shital-ghadge</a></li>
+        </ul>
+      </aside>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Shital Ghadge — QA Engineer. <a href="https://github.com/shitalghadge1683" target="_blank" rel="noopener">GitHub</a></p>
+    </div>
+  </footer>
+
+  <template id="project-template">
+    <article class="project-card" tabindex="0">
+      <div class="project-media" aria-hidden="true"></div>
+      <div class="project-body">
+        <h3 class="project-title"></h3>
+        <p class="project-desc"></p>
+        <div class="project-tags"></div>
+        <div class="project-actions">
+          <a class="repo" target="_blank" rel="noopener">Repo</a>
+          <a class="live" target="_blank" rel="noopener">Live</a>
+        </div>
+      </div>
+    </article>
+  </template>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
