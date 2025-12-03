@@ -6,6 +6,8 @@ const projects = [
     title: "Knowledge Hub Portal – Automation Framework",
     description: "Built an automation testing framework using Selenium WebDriver, Java, Maven and TestNG. Implemented Page Object Model and automated regression suites with reports.",
     tags: ["automation","selenium","java","testng","powerbi"],
+    logo: "https://cdn.simpleicons.org/selenium/ffffff",
+    mediaGradient: "linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)",
     repo: "https://github.com/shitalghadge1683/knowledge-hub-automation",
     live: ""
   },
@@ -14,6 +16,8 @@ const projects = [
     title: "TutorialsNinja – Manual Testing",
     description: "End-to-end manual testing: user flows, cross-browser checks and defect reporting in Jira. Wrote >50 test cases and validated critical scenarios.",
     tags: ["manual","jira","cross-browser","testing"],
+    logo: "https://cdn.simpleicons.org/jira/ffffff",
+    mediaGradient: "linear-gradient(135deg, #fb7185 0%, #f472b6 100%)",
     repo: "https://github.com/shitalghadge1683/tutorialsninja-testing",
     live: ""
   },
@@ -22,6 +26,8 @@ const projects = [
     title: "QA Internship – Blockstars Global",
     description: "Internship contributions: executed manual & automated test cases, integrated tests into CI and improved reporting.",
     tags: ["internship","agile","jira","automation"],
+    logo: "https://cdn.simpleicons.org/gitlab/ffffff",
+    mediaGradient: "linear-gradient(135deg, #22d3ee 0%, #3b82f6 100%)",
     repo: "https://github.com/shitalghadge1683",
     live: ""
   }
@@ -73,11 +79,15 @@ function render(list) {
     const node = template.content.cloneNode(true);
     const card = node.querySelector('.project-card');
     const media = node.querySelector('.project-media');
+    const logoImg = node.querySelector('.project-logo');
+    const initialsEl = node.querySelector('.project-initials');
     const title = node.querySelector('.project-title');
     const desc = node.querySelector('.project-desc');
     const tagsWrap = node.querySelector('.project-tags');
     const repo = node.querySelector('.repo');
     const live = node.querySelector('.live');
+    const typeEl = node.querySelector('.project-type');
+    const scopeEl = node.querySelector('.project-scope');
 
     title.textContent = p.title;
     desc.textContent = p.description;
@@ -86,9 +96,24 @@ function render(list) {
     repo.setAttribute('aria-label', `Open repo for ${p.title}`);
     live.setAttribute('aria-label', `Open live site for ${p.title}`);
 
+    const primaryTag = (p.tags && p.tags[0]) ? p.tags[0] : 'QA';
+    const friendlyTag = primaryTag.replace(/-/g, ' ');
+    if (typeEl) typeEl.textContent = friendlyTag.toUpperCase();
+    if (scopeEl) scopeEl.textContent = `${friendlyTag.charAt(0).toUpperCase()}${friendlyTag.slice(1)} focus`;
+
     // Enhanced initials with gradient
     const initials = p.title.split(' ').slice(0,2).map(s=>s[0]).join('').toUpperCase();
-    media.textContent = initials;
+    if (p.logo && logoImg) {
+      logoImg.src = p.logo;
+      logoImg.hidden = false;
+      if (initialsEl) initialsEl.hidden = true;
+    } else {
+      if (logoImg) logoImg.hidden = true;
+      if (initialsEl) {
+        initialsEl.hidden = false;
+        initialsEl.textContent = initials;
+      }
+    }
     const gradients = [
       'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
       'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
@@ -96,7 +121,7 @@ function render(list) {
       'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
       'linear-gradient(135deg, #fa709a 0%, #fee140 100%)'
     ];
-    media.style.background = gradients[idx % gradients.length];
+    media.style.background = p.mediaGradient || gradients[idx % gradients.length];
 
     // Add tags
     (p.tags || []).forEach(t => {
@@ -285,11 +310,12 @@ function animateCounter(element, target, duration = 2000) {
   const start = 0;
   const increment = target / (duration / 16); // 60fps
   let current = start;
+  const suffix = element.dataset.suffix || '+';
   
   const timer = setInterval(() => {
     current += increment;
     if (current >= target) {
-      element.textContent = target + (element.parentElement.querySelector('.stat-label').textContent.includes('%') ? '%' : '+');
+      element.textContent = `${target}${suffix}`;
       clearInterval(timer);
     } else {
       element.textContent = Math.floor(current);
@@ -312,6 +338,37 @@ const statsObserver = new IntersectionObserver((entries) => {
 document.querySelectorAll('.stat-card').forEach(card => {
   statsObserver.observe(card);
 });
+
+// Testimonials carousel
+const testimonialCards = document.querySelectorAll('.testimonial-card');
+const prevTestimonial = document.querySelector('.testimonial-nav.prev');
+const nextTestimonial = document.querySelector('.testimonial-nav.next');
+let testimonialIndex = 0;
+
+function showTestimonial(idx){
+  testimonialCards.forEach((card, i) => {
+    card.classList.toggle('active', i === idx);
+  });
+}
+
+if (testimonialCards.length){
+  showTestimonial(0);
+}
+
+if (testimonialCards.length > 1){
+  prevTestimonial?.addEventListener('click', () => {
+    testimonialIndex = (testimonialIndex - 1 + testimonialCards.length) % testimonialCards.length;
+    showTestimonial(testimonialIndex);
+  });
+  nextTestimonial?.addEventListener('click', () => {
+    testimonialIndex = (testimonialIndex + 1) % testimonialCards.length;
+    showTestimonial(testimonialIndex);
+  });
+  setInterval(() => {
+    testimonialIndex = (testimonialIndex + 1) % testimonialCards.length;
+    showTestimonial(testimonialIndex);
+  }, 6000);
+}
 
 // Enhanced particle system
 (function particlesInit(){
@@ -408,15 +465,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-// Add parallax effect to hero section
-window.addEventListener('scroll', () => {
-  const scrolled = window.pageYOffset;
-  const hero = document.querySelector('.hero');
-  if (hero && scrolled < window.innerHeight) {
-    hero.style.transform = `translateY(${scrolled * 0.3}px)`;
-    hero.style.opacity = 1 - (scrolled / window.innerHeight) * 0.5;
-  }
-});
+// Parallax on hero removed to avoid overlap with sticky header while scrolling
 
 // Keyboard navigation enhancement
 let tabbing = false;

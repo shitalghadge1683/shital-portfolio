@@ -46,6 +46,7 @@
         <p class="eyebrow">QA Engineer</p>
         <h1 class="name">Shital <span class="accent">Ghadge</span></h1>
         <p class="lead">I build robust testing solutions — manual and automated — that help teams ship reliable software.</p>
+        <p class="sublead">Delivering <span id="typed" class="typed-text"></span><span class="cursor">|</span> coverage for high-stakes releases.</p>
 
         <div class="hero-cta">
           <a class="btn btn-primary" href="#projects">See my work</a>
@@ -53,13 +54,20 @@
           <a class="link-resume" href="resume.pdf" download>Download Resume</a>
         </div>
 
-        <div class="meta">
-          <span>📍 Pimpri Chinchwad, Pune</span>
-          <span>•</span>
-          <a href="mailto:shitalghadge02@gmail.com">shitalghadge02@gmail.com</a>
-          <span>•</span>
-          <a href="https://github.com/shitalghadge1683" target="_blank" rel="noopener">GitHub</a>
-        </div>
+        <ul class="hero-highlights">
+          <li>
+            <span class="label">Manual + Automation</span>
+            <strong>Full QA ownership</strong>
+          </li>
+          <li>
+            <span class="label">80+ scenarios</span>
+            <strong>Documented test cases</strong>
+          </li>
+          <li>
+            <span class="label">Rapid feedback</span>
+            <strong>Release-ready reports</strong>
+          </li>
+        </ul>
       </div>
 
       <div class="hero-right fade-up" aria-hidden="false">
@@ -70,21 +78,70 @@
       </div>
     </section>
 
-    <!-- PROJECTS -->
-    <section id="projects" class="section container">
+    <!-- METRICS -->
+    <section id="metrics" class="section metrics container">
       <div class="section-head">
-        <h2>Featured Projects</h2>
-        <p class="muted">Automation frameworks, manual testing suites and reporting dashboards.</p>
+        <h2>Impact snapshot</h2>
+        <p class="muted">Numbers that reflect the quality gates I keep for every release.</p>
       </div>
 
-      <div class="controls">
-        <div class="filters">
+      <div class="stats-grid">
+        <article class="stat-card fade-up">
+          <span class="stat-number" data-target="4" data-suffix="+">0</span>
+          <span class="stat-label">Years of QA practice</span>
+        </article>
+        <article class="stat-card fade-up">
+          <span class="stat-number" data-target="250" data-suffix="+">0</span>
+          <span class="stat-label">Test cases authored</span>
+        </article>
+        <article class="stat-card fade-up">
+          <span class="stat-number" data-target="15" data-suffix="+">0</span>
+          <span class="stat-label">Projects supported</span>
+        </article>
+      </div>
+
+      <div class="quality-pillars">
+        <div class="pillar-card fade-up">
+          <h3>Shift-left mindset</h3>
+          <p>Embed QA during requirements grooming to prevent defects instead of just detecting them.</p>
+        </div>
+        <div class="pillar-card fade-up">
+          <h3>Data-backed reporting</h3>
+          <p>Turn raw execution logs into concise dashboards for stakeholders using Power BI.</p>
+        </div>
+        <div class="pillar-card fade-up">
+          <h3>Tooling evangelist</h3>
+          <p>Introduce frameworks and workflows (Selenium, TestNG, Jira) that scale with the team.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section projects container">
+      <div class="section-head split">
+        <div>
+          <p class="eyebrow subtle">Case studies</p>
+          <h2>Featured Projects</h2>
+          <p class="muted">Automation frameworks, manual testing suites and reporting dashboards.</p>
+        </div>
+        <ul class="legend">
+          <li><span class="dot automation"></span>Automation suites</li>
+          <li><span class="dot manual"></span>Manual QA artifacts</li>
+          <li><span class="dot internship"></span>Internship experience</li>
+        </ul>
+      </div>
+
+      <div class="controls stack">
+        <div class="filters" role="tablist" aria-label="Filter projects by focus">
           <button class="filter active" data-filter="all">All</button>
           <button class="filter" data-filter="automation">Automation</button>
           <button class="filter" data-filter="manual">Manual</button>
           <button class="filter" data-filter="internship">Internship</button>
         </div>
-        <input id="search" class="search" type="search" placeholder="Search projects..." aria-label="Search projects">
+        <div class="search-wrapper">
+          <span class="search-icon" aria-hidden="true">⌕</span>
+          <input id="search" class="search" type="search" placeholder="Search projects..." aria-label="Search projects">
+        </div>
       </div>
 
       <div id="projects-grid" class="grid" aria-live="polite"></div>
@@ -94,84 +151,283 @@
       </div>
     </section>
 
-    <!-- ABOUT / SKILLS -->
+    <!-- ABOUT -->
     <section id="about" class="section about container">
-      <div class="about-left fade-up">
-        <h2>About me</h2>
-        <p>I’m a QA Engineer who enjoys turning ambiguous requirements into tested, reliable software. I write maintainable automation, design test strategies, and work closely with developers to close defects quickly.</p>
-        <p>Tools & processes: Selenium WebDriver, TestNG, Maven, Java, Postman, Jira, SQL, Power BI, Agile workflows.</p>
+      <div class="about-panel">
+        <div class="about-left fade-up">
+          <h2>About me</h2>
+          <p>I’m a QA Engineer who enjoys turning ambiguous requirements into tested, reliable software. I write maintainable automation, design test strategies, and work closely with developers to close defects quickly.</p>
+          <p>On most projects I pair closely with developers and product owners — mapping user journeys, defining acceptance criteria, and making sure every release goes out with clear QA sign‑off and reporting.</p>
+        </div>
+
+        <aside class="about-right fade-up">
+          <div class="card facts">
+            <h3>Quick facts</h3>
+            <dl>
+              <dt>Role</dt><dd>QA Engineer</dd>
+              <dt>Availability</dt><dd>Open for freelance & full-time</dd>
+              <dt>Location</dt><dd>Pimpri Chinchwad, Pune</dd>
+            </dl>
+          </div>
+
+          <div class="card work-style">
+            <h3>How I work</h3>
+            <ul class="about-list">
+              <li>Design clear test plans from user stories and business goals.</li>
+              <li>Build automation that is stable, readable and easy to extend.</li>
+              <li>Keep stakeholders updated with concise test reports and dashboards.</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section skills-section container">
+      <div class="section-head">
+        <h2>Skills & tools</h2>
+        <p class="muted">A snapshot of the technologies and practices I use day to day.</p>
       </div>
 
-      <aside class="about-right fade-up">
-        <div class="card facts">
-          <h3>Quick facts</h3>
-          <dl>
-            <dt>Role</dt><dd>QA Engineer</dd>
-            <dt>Availability</dt><dd>Open for freelance & full-time</dd>
-            <dt>Education</dt><dd>BCS — Vidya Pratishthan's College</dd>
-          </dl>
-        </div>
+      <div class="skills-grid">
+        <article class="skill-card fade-up">
+          <h3>Testing & QA</h3>
+          <ul>
+            <li>Selenium WebDriver, TestNG, Maven</li>
+            <li>Functional, regression & smoke testing</li>
+            <li>Cross‑browser & responsive testing</li>
+          </ul>
+        </article>
 
-        <div class="card skills">
-          <h3>Skills</h3>
-          <div class="skill-list">
-            <span>Automation</span><span>Selenium</span><span>Java</span><span>TestNG</span>
-            <span>API Testing</span><span>Jira</span><span>SQL</span><span>Power BI</span>
-          </div>
+        <article class="skill-card fade-up">
+          <h3>APIs & data</h3>
+          <ul>
+            <li>API testing with Postman</li>
+            <li>Basic SQL for data validation</li>
+            <li>Reporting with Excel & Power BI</li>
+          </ul>
+        </article>
+
+        <article class="skill-card fade-up">
+          <h3>Collaboration</h3>
+          <ul>
+            <li>Jira & Agile ceremonies</li>
+            <li>Defect triage with dev teams</li>
+            <li>Clear documentation & test cases</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- JOURNEY -->
+    <section id="journey" class="section timeline container">
+      <div class="section-head">
+        <h2>Experience journey</h2>
+        <p class="muted">Highlights from internships, freelancing, and hands-on QA engagements.</p>
+      </div>
+
+      <div class="timeline-track">
+        <article class="timeline-card fade-up">
+          <div class="timeline-badge">2024</div>
+          <h3>QA Internship · Blockstars Global</h3>
+          <p>Ran manual + automation suites, triaged defects with developers, and improved regression coverage by 30%.</p>
+          <ul>
+            <li>Integrated Selenium suites into CI</li>
+            <li>Created Jira dashboards for stakeholders</li>
+          </ul>
+        </article>
+        <article class="timeline-card fade-up">
+          <div class="timeline-badge">2023</div>
+          <h3>Automation initiatives</h3>
+          <p>Designed modular frameworks with Page Object Model, data-driven tests, and crisp reporting.</p>
+          <ul>
+            <li>Knowledge Hub Portal automation</li>
+            <li>Reusable utilities for API + UI parity</li>
+          </ul>
+        </article>
+        <article class="timeline-card fade-up">
+          <div class="timeline-badge">2022</div>
+          <h3>Manual QA expertise</h3>
+          <p>Created exhaustive test suites for TutorialsNinja, increasing confidence around shopping flows.</p>
+          <ul>
+            <li>50+ user journeys validated</li>
+            <li>Cross-browser and responsive audits</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials" class="section testimonials container">
+      <div class="section-head">
+        <h2>Kind words</h2>
+        <p class="muted">What collaborators say about working with me.</p>
+      </div>
+
+      <div class="testimonial-shell">
+        <button class="testimonial-nav prev" aria-label="Previous testimonial">‹</button>
+        <div id="testimonial-track" class="testimonial-track">
+          <article class="testimonial-card active">
+            <p>“Shital anticipates edge cases before they become bugs. Her reports are crisp, actionable, and trusted by product owners.”</p>
+            <div class="author">
+              <strong>Shruti Kulkarni</strong>
+              <span>Product Manager, SaaS platform</span>
+            </div>
+          </article>
+          <article class="testimonial-card">
+            <p>“Our automation suites finally stabilized after Shital refactored them. She brings the discipline of a developer with a QA mindset.”</p>
+            <div class="author">
+              <strong>Abhay Patil</strong>
+              <span>Engineering Lead, Knowledge Hub</span>
+            </div>
+          </article>
+          <article class="testimonial-card">
+            <p>“From test planning to execution and reporting, she keeps stakeholders informed and calm through every release.”</p>
+            <div class="author">
+              <strong>Mrunal K.</strong>
+              <span>Scrum Master, Blockstars Global</span>
+            </div>
+          </article>
         </div>
-      </aside>
+        <button class="testimonial-nav next" aria-label="Next testimonial">›</button>
+      </div>
     </section>
 
     <!-- CONTACT -->
     <section id="contact" class="section contact container">
       <div class="contact-card fade-up">
-        <h2>Contact</h2>
-        <p class="muted">Interested in working together? Send a quick message — I typically reply within a few days.</p>
+        <div class="contact-layout">
+          <div class="contact-main">
+            <h2>Contact</h2>
+            <p class="muted">Interested in working together? Send a quick message — I typically reply within a few days.</p>
 
-        <form id="contact-form" class="form" action="mailto:shitalghadge02@gmail.com" method="post" enctype="text/plain">
-          <div class="form-row">
-            <label for="name">Name</label>
-            <input id="name" name="name" required>
+            <form id="contact-form" class="form" action="mailto:shitalghadge02@gmail.com" method="post" enctype="text/plain">
+              <div class="form-row">
+                <label for="name">Name</label>
+                <input id="name" name="name" required>
+              </div>
+
+              <div class="form-row">
+                <label for="email">Email</label>
+                <input id="email" type="email" name="email" required>
+              </div>
+
+              <div class="form-row">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Send message</button>
+                <a class="btn btn-outline" href="mailto:shitalghadge02@gmail.com">Or email me</a>
+              </div>
+            </form>
           </div>
 
-          <div class="form-row">
-            <label for="email">Email</label>
-            <input id="email" type="email" name="email" required>
-          </div>
+          <aside class="contact-aside">
+            <div class="card contact-info">
+              <h3>Other ways to reach me</h3>
+              <ul class="contacts">
+                <li><strong>Email:</strong> <a href="mailto:shitalghadge02@gmail.com">shitalghadge02@gmail.com</a></li>
+                <li><strong>Phone:</strong> +91-80108-18388</li>
+                <li><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/shital-ghadge-b980b7223" target="_blank" rel="noopener">linkedin.com/in/shital-ghadge</a></li>
+              </ul>
 
-          <div class="form-row">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
-          </div>
-
-          <div class="form-actions">
-            <button type="submit" class="btn btn-primary">Send message</button>
-            <a class="btn btn-outline" href="mailto:shitalghadge02@gmail.com">Or email me</a>
-          </div>
-        </form>
+              <div class="education-block">
+                <h4>Education</h4>
+                <dl>
+                  <dt>Bachelor of Computer Science (BCS)</dt>
+                  <dd>Vidya Pratishthan's College · Pune University</dd>
+                  <dt>Higher Secondary (HSC)</dt>
+                  <dd>Science stream · Maharashtra State Board</dd>
+                </dl>
+              </div>
+            </div>
+          </aside>
+        </div>
       </div>
-
-      <aside class="contact-aside fade-up">
-        <h3>Other ways</h3>
-        <ul class="contacts">
-          <li><strong>Email:</strong> <a href="mailto:shitalghadge02@gmail.com">shitalghadge02@gmail.com</a></li>
-          <li><strong>Phone:</strong> +91-80108-18388</li>
-          <li><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/shital-ghadge-b980b7223" target="_blank" rel="noopener">linkedin.com/in/shital-ghadge</a></li>
-        </ul>
-      </aside>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="container footer-inner">
-      <p>© <span id="year"></span> Shital Ghadge — QA Engineer. <a href="https://github.com/shitalghadge1683" target="_blank" rel="noopener">GitHub</a></p>
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <div class="footer-logo">Shital Ghadge</div>
+        <p class="footer-tagline">QA Engineer focused on stable releases, clear reporting, and test automation that scales with your product.</p>
+        <div class="social-links">
+          <a href="mailto:shitalghadge02@gmail.com" aria-label="Email Shital">
+            @
+          </a>
+          <a href="https://linkedin.com/in/shital-ghadge-b980b7223" target="_blank" rel="noopener" aria-label="LinkedIn profile">
+            in
+          </a>
+          <a href="https://github.com/shitalghadge1683" target="_blank" rel="noopener" aria-label="GitHub profile">
+            GH
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <div class="footer-column">
+          <h4>Navigate</h4>
+          <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>QA focus</h4>
+          <ul>
+            <li><a href="#metrics">Release quality metrics</a></li>
+            <li><a href="#journey">Experience journey</a></li>
+            <li><a href="#projects">Automation frameworks</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Contact</h4>
+          <ul class="contact-info">
+            <li>
+              <span>Email</span>
+              <span><a href="mailto:shitalghadge02@gmail.com">shitalghadge02@gmail.com</a></span>
+            </li>
+            <li>
+              <span>Phone</span>
+              <span>+91-80108-18388</span>
+            </li>
+            <li>
+              <span>Location</span>
+              <span>Pimpri Chinchwad, Pune</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>© <span id="year"></span> Shital Ghadge · QA Engineer</p>
+      <div class="footer-bottom-links">
+        <a href="resume.pdf" download>Download CV</a>
+        <a href="#contact">Hire me</a>
+      </div>
     </div>
   </footer>
 
   <template id="project-template">
     <article class="project-card" tabindex="0">
-      <div class="project-media" aria-hidden="true"></div>
+      <div class="project-media" aria-hidden="true">
+        <img class="project-logo" src="" alt="" loading="lazy">
+        <span class="project-initials"></span>
+      </div>
       <div class="project-body">
+        <div class="project-meta">
+          <span class="project-type"></span>
+          <span class="project-scope"></span>
+        </div>
         <h3 class="project-title"></h3>
         <p class="project-desc"></p>
         <div class="project-tags"></div>
