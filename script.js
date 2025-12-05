@@ -251,15 +251,26 @@ if (themeToggle) {
 // Mobile menu with animation
 const menuBtn = document.getElementById('menu-toggle');
 const mobileMenu = document.getElementById('mobile-menu');
-if (menuBtn) menuBtn.addEventListener('click', () => {
-  const open = menuBtn.getAttribute('aria-expanded') === 'true';
-  menuBtn.setAttribute('aria-expanded', String(!open));
-  mobileMenu.hidden = open;
+if (menuBtn && mobileMenu) {
+  menuBtn.addEventListener('click', () => {
+    const open = menuBtn.getAttribute('aria-expanded') === 'true';
+    menuBtn.setAttribute('aria-expanded', String(!open));
+    mobileMenu.hidden = open;
+    
+    if (!open) {
+      mobileMenu.style.animation = 'slideDown 0.3s ease-out';
+    }
+  });
   
-  if (!open) {
-    mobileMenu.style.animation = 'slideDown 0.3s ease-out';
-  }
-});
+  // Close mobile menu when clicking on a link
+  const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+  mobileMenuLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      menuBtn.setAttribute('aria-expanded', 'false');
+      mobileMenu.hidden = true;
+    });
+  });
+}
 
 // Enhanced Intersection Observer for fade-up animations
 const ioOpts = {root:null, rootMargin:'0px', threshold:0.1};
