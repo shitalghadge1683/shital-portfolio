@@ -1,4 +1,4 @@
-// Enhanced Professional Portfolio Script with Advanced Animations
+// Enhanced Professional Portfolio Script with Mobile Menu Fix
 
 const projects = [
   {
@@ -130,18 +130,20 @@ function render(list) {
       tagsWrap.appendChild(sp);
     });
 
-    // 3D tilt effect on hover
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const cx = rect.left + rect.width/2;
-      const cy = rect.top + rect.height/2;
-      const dx = (e.clientX - cx) / rect.width;
-      const dy = (e.clientY - cy) / rect.height;
-      card.style.transform = `perspective(1000px) rotateX(${ -dy * 10 }deg) rotateY(${ dx * 10 }deg) translateY(-8px) scale(1.02)`;
-    });
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = '';
-    });
+    // 3D tilt effect on hover (disable on mobile)
+    if (window.innerWidth > 768) {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const cx = rect.left + rect.width/2;
+        const cy = rect.top + rect.height/2;
+        const dx = (e.clientX - cx) / rect.width;
+        const dy = (e.clientY - cy) / rect.height;
+        card.style.transform = `perspective(1000px) rotateX(${ -dy * 10 }deg) rotateY(${ dx * 10 }deg) translateY(-8px) scale(1.02)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+      });
+    }
 
     // Staggered animation delay
     card.style.transitionDelay = `${idx * 100}ms`;
@@ -248,27 +250,50 @@ if (themeToggle) {
   applyTheme(prefersLight);
 })();
 
-// Mobile menu with animation
+// ========== FIXED: Mobile menu with auto-close ==========
 const menuBtn = document.getElementById('menu-toggle');
 const mobileMenu = document.getElementById('mobile-menu');
+
 if (menuBtn && mobileMenu) {
-  menuBtn.addEventListener('click', () => {
-    const open = menuBtn.getAttribute('aria-expanded') === 'true';
-    menuBtn.setAttribute('aria-expanded', String(!open));
-    mobileMenu.hidden = open;
+  // Toggle menu on hamburger click
+  menuBtn.addEventListener('click', (e) => {
+    e.stopPropagation(); // Prevent immediate close from document click
+    const isOpen = menuBtn.getAttribute('aria-expanded') === 'true';
+    menuBtn.setAttribute('aria-expanded', String(!isOpen));
+    mobileMenu.hidden = isOpen;
     
-    if (!open) {
+    if (!isOpen) {
       mobileMenu.style.animation = 'slideDown 0.3s ease-out';
     }
   });
-  
-  // Close mobile menu when clicking on a link
+
+  // Close menu when clicking on any link inside mobile menu
   const mobileMenuLinks = mobileMenu.querySelectorAll('a');
   mobileMenuLinks.forEach(link => {
     link.addEventListener('click', () => {
+      // Close the menu
       menuBtn.setAttribute('aria-expanded', 'false');
       mobileMenu.hidden = true;
     });
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener('click', (e) => {
+    const isClickInsideMenu = mobileMenu.contains(e.target);
+    const isClickOnToggle = menuBtn.contains(e.target);
+    
+    if (!isClickInsideMenu && !isClickOnToggle && !mobileMenu.hidden) {
+      menuBtn.setAttribute('aria-expanded', 'false');
+      mobileMenu.hidden = true;
+    }
+  });
+
+  // Close menu on escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !mobileMenu.hidden) {
+      menuBtn.setAttribute('aria-expanded', 'false');
+      mobileMenu.hidden = true;
+    }
   });
 }
 
@@ -475,8 +500,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     }
   });
 });
-
-// Parallax on hero removed to avoid overlap with sticky header while scrolling
 
 // Keyboard navigation enhancement
 let tabbing = false;
